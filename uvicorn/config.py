@@ -400,8 +400,10 @@ class Config:
                 try:
                     import tomllib
                 except ImportError as exc:
-                    raise ImportError("`tomllib` needs to be installed "
-                                      "to read logging configuration TOML files.") from exc
+                    raise ImportError(
+                        "`tomllib` needs to be installed to read logging "
+                        "configuration TOML files."
+                    ) from exc
 
                 with open(self.log_config, "rb") as file:
                     loaded_config = tomllib.load(file)
