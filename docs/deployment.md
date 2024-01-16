@@ -80,7 +80,7 @@ Options:
                                   application interface.  [default: auto]
   --env-file PATH                 Environment configuration file.
   --log-config PATH               Logging configuration file. Supported
-                                  formats: .ini, .json, .yaml.
+                                  formats: .ini, .json, .yaml, .toml.
   --log-level [critical|error|warning|info|debug|trace]
                                   Log level. [default: info]
   --access-log / --no-access-log  Enable/Disable access log.

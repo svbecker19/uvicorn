@@ -394,6 +394,18 @@ class Config:
                 with open(self.log_config) as file:
                     loaded_config = yaml.safe_load(file)
                     logging.config.dictConfig(loaded_config)
+            elif self.log_config.endswith(".toml"):
+                # Install tomllib package to enable this functionality.
+                # Part of the Python standard library since 3.11.
+                try:
+                    import tomllib
+                except ImportError as exc:
+                    raise ImportError("`tomllib` needs to be installed "
+                                      "to read logging configuration TOML files.") from exc
+
+                with open(self.log_config, "rb") as file:
+                    loaded_config = tomllib.load(file)
+                    logging.config.dictConfig(loaded_config)
             else:
                 # See the note about fileConfig() here:
                 # https://docs.python.org/3/library/logging.config.html#configuration-file-format
